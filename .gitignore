@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ShopNongSan/.vs/ShopNongSan/v17
+/ShopNongSan/.vs/ShopNongSan/DesignTimeBuild
