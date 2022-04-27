@@ -1,0 +1,332 @@
+.ddsmoothmenu{
+	width:auto;
+	float:left;
+}
+
+.ddsmoothmenu ul{
+	z-index:100;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+
+/*Top level list items*/
+.ddsmoothmenu ul li{
+position: relative;
+display:inline-block;
+float: left;
+padding:0;
+}
+
+
+/*Top level menu link items style*/
+.li_menu a{
+	position:relative;.ddsmoothmenu ul li
+	background: none;
+	color: #fff;
+	font-family: 'Roboto';
+	font-size:13px;
+	font-weight:400;
+	letter-spacing:2px;
+	text-decoration: none;
+	text-transform:uppercase;
+	transition:0.3s ease-out;
+	-o-transition:0.3s ease-out;
+	-moz-transition:0.3s ease-out;
+	-webkit-transition:0.3s ease-out
+}
+
+div.ddsmoothmobile .head-side{
+	display:block;
+	height:34px;
+	width:100%;
+	position:fixed;
+	z-index:99999;
+	top:0;
+	left:0;
+	padding:0;
+	margin:0;
+	text-align:right;
+	}
+
+div.ddsmoothmobile .head-side a{
+	display:block;
+	line-height:34px;
+	padding:0 10px;
+	background:#FC0;
+	}
+
+
+* html .ddsmoothmenu ul li a{ /*IE6 hack to get sub menu links to behave correctly*/
+display: inline-block;
+}
+
+
+
+.ddsmoothmenu ul li a.selected:after{
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+	}
+.active_menu:hover{opacity: 1 !important;background: none !important;}
+.ddsmoothmenu ul li a:hover{
+background: none;
+	color: rgba(255, 255, 255, 0.6);
+}
+.active_menu{opacity: .6;background: none !important;}
+
+
+.downarrowclass{
+position: absolute;
+top: 12px;
+right: 7px;
+}
+
+.rightarrowclass{
+position: absolute;
+top: 13px;
+right: 15px;
+}
+
+.leftarrowclass{
+	position: absolute;
+    top: 17px;
+    left: 15px;
+}
+
+
+.downarrowclass:after{
+	content: "";
+	position: absolute;
+	right: 20px;
+	top: 17px;
+	width: 6px;
+	height: 6px;
+	border: 1px solid #111;
+	border-width: 0 1px 1px 0;
+	-webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+	}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+
+.ddshadow{
+position: absolute;
+left: 0;
+top: 0;
+width: 0;
+height: 0;
+background-color: #ccc; /* generally should be just a little lighter than the box-shadow color for CSS3 capable browsers */
+}
+
+.toplevelshadow{
+margin: 5px 0 0 5px; /* in NON CSS3 capable browsers gives the offset of the shadow */
+opacity: 0.8; /* shadow opacity mostly for NON CSS3 capable browsers. Doesn't work in IE */
+}
+
+.ddcss3support .ddshadow.toplevelshadow {
+margin: 0; /* in CSS3 capable browsers overrides offset from NON CSS3 capable browsers, allowing the box-shadow values in the next selector to govern that */
+/* opacity: 1; */ /* optionally uncomment this to remove partial opacity for browsers supporting a box-shadow property which has its own slight gradient opacity */
+}
+
+.ddcss3support .ddshadow {
+background-color: transparent;
+box-shadow: 5px 5px 5px #aaa; /* box-shadow color generally should be a little darker than that for the NON CSS3 capable browsers background-color */
+-moz-box-shadow: 5px 5px 5px #aaa;
+-webkit-box-shadow: 5px 5px 5px #aaa;
+}
+
+/* ######### Mobile menu container CSS ######### */
+
+div.ddsmoothmobile{ /* main mobile menu container */
+background: #fff;
+color: #333;
+position: fixed;
+top: 0;
+right: 0;
+width: 240px; /* width of mobile menu */
+height: 70%;
+min-height:250px;
+overflow: hidden;
+visibility: hidden;
+}
+
+div.ddsmoothmobile::before{
+	position:relative;
+	cursor:pointer;
+	z-index:9999;
+	background:#FF5000;
+	width:100%;
+	height:36px;
+	top:0;
+	left:0;
+	display:block;
+	content:"";
+	}
+
+div.ddsmoothmobile a{
+font-family: 'Roboto';
+color: #333;
+text-decoration: none;
+}
+
+
+
+div.ddsmoothmobile div.topulsdiv{ /* Single DIV that surrounds all top level ULs before being flattened, or the ULs on the "frontpage" of the menu */
+position: relative;
+background: #fff;
+overflow-y: auto;
+width: 100%;
+height: 100%;
+}
+
+div.ddsmoothmobile ul{ /* style for all ULs in general inside mobile menu */
+list-style: none;
+width: 100%;
+top: 0;
+left: 0;
+background: #fff;
+margin: 0;
+padding: 0;
+}
+
+div.ddsmoothmobile div.topulsdiv ul.submenu{ /* top level ULs style */
+}
+
+
+div.ddsmoothmobile ul.submenu{ /* sub level ULs style */
+position: absolute;
+height: 100%;
+top:36px;
+overflow-y: auto;
+}
+
+div.ddsmoothmobile ul li{
+position: relative;
+}
+
+div.ddsmoothmobile ul li.breadcrumb{ /* breadcrumb LI that's added to the top of every sub level UL */
+cursor: pointer;
+padding: 12px;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+text-align:center;
+background: #dedede;
+}
+
+div.ddsmoothmobile ul li a{
+display: block;
+padding: 12px 9px;
+border-bottom:1px solid #eee;
+text-align:center;
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+
+
+/* ############# Animated Drawer icon (mobile menu toggler) CSS ############# */
+
+.animateddrawer{
+	font-size: 12px; /* Base font size. Adjust this value to modify size of drawer icon */
+	width: 30px;
+	height: 20px;
+	outline: none;
+	position:fixed; /* BY default, make toggler fixed on screen */
+	display: none;
+	top: 30px; /* Position at upper right corner */
+	right: 30px;
+	z-index: 10000000000;
+}
+
+.animateddrawer:before, .animateddrawer:after{
+  position: absolute;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px; /* height of top and bottom drawer line */
+  background: #0f612a;
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  -webkit-transition: all 0.3s ease-in; /* set transition type and time */
+  transition: all 0.3s ease-in;
+}
+
+.animateddrawer:after{
+  top: auto;
+  bottom: 0;
+}
+
+.animateddrawer span{
+  width: 100%;
+  height: 2px; /* height of middle drawer line */
+  background: #0f612a;
+  position: absolute;
+  top: 50%;
+  margin-top: -1px; /* set this to - half of middle drawer line height */
+  border-radius: 0;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transition: all 0.3s ease-in 0.3s; /* set transition type and time */
+  transition: all 0.3s ease-in 0.3s;
+}
+
+.animateddrawer span::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px; /* height of middle drawer line */
+  background: #0f612a;
+  border-radius: 0;
+  position: absolute;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transition: all 0.3s ease-in 0.3s; /* set transition type and time */
+  transition: all 0.3s ease-in 0.3s;
+}
+
+.animateddrawer.open{
+	width: 1.7em;
+	height: 1.2em;
+	top: 10px;
+	right: 10px;
+}
+
+.animateddrawer.open:before{ /* style when .open class is added to button */
+  top: 50%;
+  margin-top: -0.3em; /* set this to - half of top drawer line height */
+  opacity: 0;
+}
+
+.animateddrawer.open:after{ /* style when .open class is added to button */
+  bottom: 50%;
+  opacity: 0;
+}
+
+.animateddrawer.open span{ /* style when .open class is added to button */
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.animateddrawer.open span:after{ /* style when .open class is added to button */
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+
+
+

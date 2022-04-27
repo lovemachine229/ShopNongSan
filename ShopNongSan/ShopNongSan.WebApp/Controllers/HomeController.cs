@@ -18,7 +18,12 @@ namespace ShopNongSan.WebApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ListBuying()
+        {
+            return View();
+        }
+
+        public IActionResult ListSelling()
         {
             return View();
         }

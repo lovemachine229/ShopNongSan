@@ -1,0 +1,26 @@
+.tin{border:1px solid #CCC}
+.hang{border:1px solid #CCC;padding:8px}
+table{border-collapse:collapse}
+th,td{text-align:left;padding:8px;border:1px solid #CCC}
+th{background:#E0E0E0 url(../img/bg_th.png) repeat-x top;font-size:14px;border:1px solid #CCC}
+tr.alt td{background:#F2F2F2 url(../img/bg_td_alt.png) repeat-x top;text-shadow:1px 1px 1px #fff}
+.extrabottom{padding:15px;background:url(../img/bg_fade_sml.png) repeat-x top left;border-radius:10px;-moz-border-radius:10px;margin-top:10px;float:left;width:98%}
+.extrabottom ul{float:left}
+.extrabottom li{float:left;padding-right:25px}
+.extrabottom li img{float:left;padding:0 5px 0 0}
+.bulkactions{float:right}
+.contentcontainer1{float:left;width:500px}
+#NewsDetail1{width:500px !important}
+ul.pagination{float:right;font-size:11px;clear:both}
+ul.pagination li{float:left;padding-right:5px}
+ul.pagination li a{padding:3px 7px;text-decoration:none;display:block;background:#fff url(../img/bg_fade_up.png) repeat-x bottom}
+ul.pagination li a:hover{background:#ec0000;text-decoration:none}
+ul.pagination li.page a{color:#fff;font-weight:700;background:#0b6c2b}
+ul.pagination li.page a:hover{background:#ec0000;text-decoration:none}
+ul.pagination li.text a{border:none;text-decoration:underline;padding:0 5px 0 0}
+ul.pagination li.text{line-height:2em}
+.xdsoft_datetimepicker .xdsoft_calendar td > div{padding-right:10px;margin-top:5px !important}
+.xdsoft_datetimepicker .xdsoft_calendar th{padding:10px 1px}
+input[type="text"],input[type="password"],input[type="email"],input[type="url"],textarea{border-color:#E0E0E0;border-style:solid;border-width:1px;padding:10px;outline:none;color:#939393;height: 35px;}
+#btnHuy{background: #0c702d;color: #fff;border: none;padding: 9px 10px;cursor: pointer;width: 100px;outline: none}
+#btnCapNhat{background: #0c702d;color: #fff;border: none;padding: 9px 10px;cursor: pointer;width: 100px;outline: none}

@@ -5,3 +5,16 @@
 /.vs
 /ShopNongSan/.vs/ShopNongSan/v17
 /ShopNongSan/.vs/ShopNongSan/DesignTimeBuild
+/ShopNongSan/ShopNongSan.WebApp/bin/Debug/net6.0
+*.sentinel
+/ShopNongSan/.vs/ShopNongSan/config
+*.exe
+/ShopNongSan/ShopNongSan.WebApp/obj/Debug/net6.0/ref
+/ShopNongSan/ShopNongSan.WebApp/obj/Debug/net6.0/refint
+/ShopNongSan/ShopNongSan.WebApp/obj/Debug/net6.0/scopedcss
+*.json
+*.dll
+*.pdb
+*.cs
+*.cache
+*.txt

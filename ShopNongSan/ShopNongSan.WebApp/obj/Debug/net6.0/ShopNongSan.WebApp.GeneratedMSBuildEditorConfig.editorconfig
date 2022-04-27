@@ -19,12 +19,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ADMIN/OneDrive/Máy tính/Đồ án/ShopNongSan/ShopNongSan/ShopNongSan/ShopNongSan.WebApp/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[C:/Users/ADMIN/OneDrive/Máy tính/Đồ án/ShopNongSan/ShopNongSan/ShopNongSan/ShopNongSan.WebApp/Views/Home/ListBuying.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaXN0QnV5aW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/OneDrive/Máy tính/Đồ án/ShopNongSan/ShopNongSan/ShopNongSan/ShopNongSan.WebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/OneDrive/Máy tính/Đồ án/ShopNongSan/ShopNongSan/ShopNongSan/ShopNongSan.WebApp/Views/Shared/_LayoutClient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDbGllbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ADMIN/OneDrive/Máy tính/Đồ án/ShopNongSan/ShopNongSan/ShopNongSan/ShopNongSan.WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]

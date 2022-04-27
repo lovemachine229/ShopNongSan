@@ -1,49 +1,439 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ShopNongSan.WebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ShopNongSan.WebApp.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ShopNongSan.WebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Danh mục tin bán- Mua bán nông sản</title>
+        <base href="#" />
+        <meta name="description" content="Mua bán nông sản, nông sản online, mua bán nông sản uy tín,sàn giao dịch, mua bán nông sản giá rẻ, chất lượng,mua ban nong sản, "/>
+  <meta name="keywords" content="nong san, mua nong san, ban nong san, nong san gia re, nong san chat luong,nong san, can mua, can ban, thu mua nong san, cung cap nong san,nong san cong nghiep,nong san gia vi">
+      <meta property="og:url" itemprop="url" content="" />
+       <meta property="og:image" itemprop="thumbnailUrl" content="" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+                <script type="text/javascript" src="~/js/jquery-2.0.0.min.js"></script>
+                <script type="text/javascript" src="~/js/animate.js"></script>
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c4d2816723a67c"></script>
+                <script type="text/javascript" src="~/js/jquery-ui.js"></script>
+                <link href="~/css/menu.css?v=1650959513" rel="stylesheet" type="text/css" />
+                <script type="text/javascript" src="~/js/js.js"></script>
+                <script type="text/javascript" src="~/js/jquery.datetimepicker.js"></script>
+                <script type="text/javascript" src="~/editor/ckeditor/ckeditor.js"></script>
+                <script type="text/javascript" src="~/js/jquery.ui.datepicker.js"></script>
+                <script type="text/javascript" src="~/js/script.js"></script>
+                <script type="text/javascript" src="~/editor/find/ckfinder.js"></script>
+                <link rel="shortcut icon" type="image/x-icon" href="~/images/logo.png" />
+                <link href="~/css/reset1.css" rel="stylesheet" type="text/css" />
+                <link href="~/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+                <link href="~/css/login_home.css" rel="stylesheet" type="text/css" />
+                <link rel="stylesheet" type="text/css" href="~/css/responsive.css?v=1650959513" />
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <link href="~/css/nongsan1.css?v=1650959513" rel="stylesheet" type="text/css" />
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - ShopNongSan.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <meta property="og:title" itemprop="headline" content="Danh mục tin bán" />
+        <meta property="og:url" itemprop="url" content="#" />
+        <meta property="og:image" itemprop="thumbnailUrl" content="~/images/banner.PNG" />
+        <meta property="og:image:alt"  content="Danh mục tin bán" />
+        <meta property="og:title" content="Danh mục tin bán" />
+        <meta property="og:description" content="Mua bán nông sản, nông sản online, mua bán nông sản uy tín,sàn giao dịch, mua bán nông sản giá rẻ, chất lượng,mua ban nong sản, " />
+       <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59672217-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+                </head>
+                <style type="text/css">
+                    .menu{ background:#fff;  color: #0f612a !important;padding: 10px 17px !important;}
+                </style>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        var url = window.location.href;
+        $('.amenu a[href="'+url+'"]').addClass('menu');
+    });
+    </script>
+
+                <body>
+                <a class="animateddrawer" id="ddsmoothmenu-mobiletoggle" href="#" onclick="return false">
+                    <span></span>
+                </a>
+                    <div id="wrapper">
+                        <div id="header">
+
+                            
+<script>
+    $(document).ready(function (){
+        var windowWidth = $(window).width();
+        if(windowWidth < 1000) {
+            $(".sub_menu").remove();
+        }else {
+            $(".menu_ul").remove();
+        }
+    });
+</script>
+<script>
+    $(window).resize(function(){
+        var windowWidth = $(window).width();
+        if(windowWidth < 1000) {
+            $(".sub_menu").remove();
+
+        }else {
+            $(".menu_ul").remove();
+
+        }
+    });
+</script>
+<link rel="stylesheet" type="text/css" href="~/css/ddsmoothmenu.css" />
+<script type="text/javascript" src="~/js/ddsmoothmenu.js"></script>
+<div id="logo_bannner">
+    <div id="banner_top" style="position: relative">
+        <a href="#"> <img src="~/images/banner.PNG" style="width: 1170px;height: 136px"></a>
+    </div>
+    <div class="top-nav">
+        <div class="menu_top">
+            <div id="smoothmenu1" class="ddsmoothmenu">
+                <ul class="menu_menu">
+                    <li class="amenu"><a  href="#">Trang Chủ</a></li>
+                    <li class="amenu"><a href="#">Giới Thiệu</a></li>
+                    <li class="amenu"><a class="menu" href="#">Cần Bán</a></li>
+                    <li class="amenu"><a class="" href="#">Cần Mua</a></li>
+                    <li class="amenu"><a class="" href="#">Tin Tức</a></li>
+                    <li class="amenu"><a href="#">Liên Hệ</a></li>
+                    <li class='amenu'><a href='#'>Đăng nhập - đăng ký</a></li>                    
+                </ul>
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</div>                            
+
+<div id="searh_news_1">
+    <div class="searh_news_1">
+
+        <form id="form_search1" method="get" action="#"> @*Action Search*@
+
+            <input type="text" class="input_1_1 input_1_3" name="keys">
+            <select class="input_1_1 input_1_2 " name="loai">
+                <option style="text-align: center" value="-1"> Loại sản phẩm </option>
+                                    <option value="1">Rau củ</option>
+                                    <option value="2">Trái cây</option>
+                                    <option value="3">Các loại hạt và ngũ cốc</option>
+                                    <option value="4">Thực phẩm sấy khô</option>
+                                    <option value="5">Gia vị</option>
+                                    <option value="6">Sản phẩm khác</option>
+                                    <option value="7">Thịt tươi sống</option>
+                                    <option value="8">Thủy & hải sản</option>
+            </select>
+            <select class="input_1_1 input_1_2 input_1_4" name="tinh">
+                <option value="-1"> Tỉnh/Tp </option>
+                                    <option value="An Giang">An Giang</option>
+                                    <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                    <option value="Bắc Giang">Bắc Giang</option>
+                                    <option value="Bắc Kạn">Bắc Kạn</option>
+                                    <option value="Bạc Liêu">Bạc Liêu</option>
+                                    <option value="Bắc Ninh">Bắc Ninh</option>
+                                    <option value="Bến Tre">Bến Tre</option>
+                                    <option value="Bình Định">Bình Định</option>
+                                    <option value="Bình Dương">Bình Dương</option>
+                                    <option value="Bình Phước">Bình Phước</option>
+                                    <option value="Bình Thuận">Bình Thuận</option>
+                                    <option value="Bình Thuận">Bình Thuận</option>
+                                    <option value="Cà Mau">Cà Mau</option>
+                                    <option value="Cao Bằng">Cao Bằng</option>
+                                    <option value="Đắk Lắk">Đắk Lắk</option>
+                                    <option value="Đắk Nông">Đắk Nông</option>
+                                    <option value="Điện Biên">Điện Biên</option>
+                                    <option value="Đồng Nai">Đồng Nai</option>
+                                    <option value="Đồng Tháp">Đồng Tháp</option>
+                                    <option value="Đồng Tháp">Đồng Tháp</option>
+                                    <option value="Gia Lai">Gia Lai</option>
+                                    <option value="Hà Giang">Hà Giang</option>
+                                    <option value="Hà Nam">Hà Nam</option>
+                                    <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                    <option value="Hải Dương">Hải Dương</option>
+                                    <option value="Hậu Giang">Hậu Giang</option>
+                                    <option value="Hòa Bình">Hòa Bình</option>
+                                    <option value="Hưng Yên">Hưng Yên</option>
+                                    <option value="Khánh Hòa">Khánh Hòa</option>
+                                    <option value="Kiên Giang">Kiên Giang</option>
+                                    <option value="Kon Tum">Kon Tum</option>
+                                    <option value="Lai Châu">Lai Châu</option>
+                                    <option value="Lâm Đồng">Lâm Đồng</option>
+                                    <option value="Lạng Sơn">Lạng Sơn</option>
+                                    <option value="Lào Cai">Lào Cai</option>
+                                    <option value="Long An">Long An</option>
+                                    <option value="Nam Định">Nam Định</option>
+                                    <option value="Nghệ An">Nghệ An</option>
+                                    <option value="Ninh Bình">Ninh Bình</option>
+                                    <option value="Ninh Thuận">Ninh Thuận</option>
+                                    <option value="Phú Thọ">Phú Thọ</option>
+                                    <option value="Quảng Bình">Quảng Bình</option>
+                                    <option value="Quảng Bình">Quảng Bình</option>
+                                    <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                    <option value="Quảng Ninh">Quảng Ninh</option>
+                                    <option value="Quảng Trị">Quảng Trị</option>
+                                    <option value="Sóc Trăng">Sóc Trăng</option>
+                                    <option value="Sơn La">Sơn La</option>
+                                    <option value="Tây Ninh">Tây Ninh</option>
+                                    <option value="Thái Bình">Thái Bình</option>
+                                    <option value="Thái Nguyên">Thái Nguyên</option>
+                                    <option value="Thanh Hóa">Thanh Hóa</option>
+                                    <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                    <option value="Tiền Giang">Tiền Giang</option>
+                                    <option value="Trà Vinh">Trà Vinh</option>
+                                    <option value="Tuyên Quang">Tuyên Quang</option>
+                                    <option value="Vĩnh Long">Vĩnh Long</option>
+                                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                    <option value="Yên Bái">Yên Bái</option>
+                                    <option value="Phú Yên">Phú Yên</option>
+                                    <option value="Tp.Cần Thơ">Tp.Cần Thơ</option>
+                                    <option value="Tp.Đà Nẵng">Tp.Đà Nẵng</option>
+                                    <option value="Tp.Hải Phòng">Tp.Hải Phòng</option>
+                                    <option value="Tp.Hà Nội">Tp.Hà Nội</option>
+                                    <option value="TP  HCM">TP HCM</option>
+                            </select>
+            <select class="input_1_1 input_1_2" name="muaban">
+                <option value="-1">Loại</option>
+                <option value="0">Mua</option>
+                <option value="1">Bán</option>
+            </select>
+            </select>
+            <input type="submit" value="Tìm kiếm" class="btn_sb">
+        </form>
+    </div>
+</div>
+
+
+                        </div>
+                     
+<script>
+    $(document).ready(function(){
+        $(".one").hover(function(){
+        $(this).stop(true, false).animate({ width: "120px" });},
+    function() {
+    $(this).stop(true, false).animate({ width: "100px" });
+});
+$(".one123").click(function() {
+   var myClass = this.className;
+   alert('Bạn vui lòng đăng nhập để được đăng tin');
+});
+
+});
+</script>
+
+<script>
+$(document).ready(function() {
+ 
+$(".banusser").click(function() {
+   var myClass = this.className;
+   alert('Tài khoản của bạn bị khóa vui lòng liên hệ ban trản trị');
+});
+  
+});
+</script>
+<style>
+   .abc{pointer-events: none;}
+   .banusser1{pointer-events: none;}
+</style>
+<div class="one one123">
+
+    <a class="abc " disabled="disabled" href="#">&nbsp;&nbsp;Đăng Tin</a>
+    
+</div>
+
+<!--
+ 
+-->                                                <div id="main">
+
+                        <style>
+    .search_view{background: #0f612a;float: left;width: 100%; height: 20px}
+</style>
+<div class="content_content">
+    <div class="left_child">
+       
+        <div class="menu_left">
+            
+                <style>
+    .thanhmenu{text-align: center;color: #fff;width: 100%;padding: 9px 0px}
+</style>
+<div class="menu_ns">
+    <div class="thanhmenu">Danh Mục Nông Sản</div>
+    <div id='cssmenu'>
+        @*<ul>
+                @foreach (var item in CategoryService.GetAll())
+                {
+                    <li><a href='@Url.Action("Details", "Category", new {id = item.CategoryId})'><span>Rau củ</span></a></li>
+                }
+        </ul>*@
+     </div>
+
+</div>
+        
+<style>
+    .border_{border-left: 1px solid #eee;border-right: 1px solid #eee}
+    .add_lienhe{margin-left: 95px;margin-top: -40px;height: 5px;width: 148px !important;float: left}
+    .boot_lienhe{margin-top: 28px}
+</style>
+<div style="width: 100%;float: left;padding-bottom: 10px">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+<div class="noibat_child border_" style="">
+    <p class="bbb">Tài khoản nổi bật</p>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Cty TNHH Thanh Thủy" alt="Cty TNHH Thanh Thủy"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">Cty TNHH Thanh Thủy</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Hộ Kinh Doanh Cá Thể Everwin" alt="Hộ Kinh Doanh Cá Thể Everwin"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">Hộ Kinh Doanh Cá Thể Everwin</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="CÔNG TY TRƯỜNG PHÚ" alt="CÔNG TY TRƯỜNG PHÚ"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">CÔNG TY TRƯỜNG PHÚ</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="BÁC SĨ NHÀ NÔNG" alt="BÁC SĨ NHÀ NÔNG"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">BÁC SĨ NHÀ NÔNG</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/tnhh-thuc-pham-viet-khanh-155.html" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="TNHH Thực Phẩm Việt Khánh" alt="TNHH Thực Phẩm Việt Khánh"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/tnhh-thuc-pham-viet-khanh-155.html">TNHH Thực Phẩm Việt Khánh</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/tnhh-thuc-an-chan-nuoi-thien-phu-293.html" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="TNHH Thức ăn chăn nuôi Thiên Phu" alt="TNHH Thức ăn chăn nuôi Thiên Phu"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/tnhh-thuc-an-chan-nuoi-thien-phu-293.html">TNHH Thức ăn chăn nuôi Thiên Phu</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/cong-ty-tnhh-sx-tm-nguyen-lieu-cong-nghiep-mien-nam-503.html" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Công ty TNHH SX TM Nguyên Liệu Công Nghiệp Miền Nam" alt="Công ty TNHH SX TM Nguyên Liệu Công Nghiệp Miền Nam"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/cong-ty-tnhh-sx-tm-nguyen-lieu-cong-nghiep-mien-nam-503.html">Công ty TNHH SX TM Nguyên Liệu Công Nghiệp Miền&#8230;</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/highlands-cashew-244.html" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Highlands Cashew" alt="Highlands Cashew"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/highlands-cashew-244.html">Highlands Cashew</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/gaprovietnam-228.html" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="gaprovietnam" alt="gaprovietnam"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/gaprovietnam-228.html">gaprovietnam</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Green Future VN" alt="Green Future VN"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">Green Future VN</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Nông sản phan rang" alt="Nông sản phan rang"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">Nông sản phan rang</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/epp-vietnam-company-limited-572.html" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="EPP VIETNAM COMPANY LIMITED" alt="EPP VIETNAM COMPANY LIMITED"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/epp-vietnam-company-limited-572.html">EPP VIETNAM COMPANY LIMITED</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Công ty TNHH Neo Bright" alt="Công ty TNHH Neo Bright"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">Công ty TNHH Neo Bright</a></p>
+    </div>
+     
+    <div class="news_nb">
+        <a href="https://muabannongsan.org/" class="thum_child1" onclick="return false">
+                            <img class="img_child1" src="~/images/logo_cty_1.png" title="Hoá chất Vinasharp" alt="Hoá chất Vinasharp"/>
+                    </a>
+        <p class="tieude_nb">
+            <a style="color:#0a6126" onclick="return false" href="https://muabannongsan.org/">Hoá chất Vinasharp</a></p>
+    </div>
+    </div>            </div>
+    </div>
+    
+    
+    @RenderBody()
+
+    </div>            </div>
+
+
+<div id="footer">
+               
+    <div class="thongtin">
+                    
+<p></p>
+                    <p>Địa chỉ : 11/30B Đường số 28, Phường 6, Gò Vấp, Tp.Hồ Chí Minh </p>
+                    <p>Tel : <a href="tel:0935806696" style="color: #fff">0935 806 696</a> </p>
+                     <p>Chúng tôi không trực tiếp bán hàng, xem địa chỉ người bán đầu bản tin.</p>
+    </div>
+</div>
+ 
+                    </div>
+
+
+                
 </body>
-</html>
+                </html>
+
+
+
+<style type="text/css">
+    .thongbao{width: 1170px;margin: auto}
+    .thongbao1{float: left;width: 100%;padding: 10px 0px}
+</style>
+
+<script type="text/javascript">
+    ddsmoothmenu.init({
+        mainmenuid: "smoothmenu1",
+        orientation: 'h',
+        classname: 'ddsmoothmenu',contentsource: "markup"
+    })
+
+</script>
