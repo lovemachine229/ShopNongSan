@@ -18,3 +18,11 @@
 *.cs
 *.cache
 *.txt
+/ShopNongSan/ShopNongSan.AdminApp/obj
+/ShopNongSan/ShopNongSan.Data/obj
+/ShopNongSan/ShopNongSan.Service/obj
+/ShopNongSan/ShopNongSan.WebApp/obj
+/ShopNongSan/ShopNongSan.AdminApp/bin
+/ShopNongSan/ShopNongSan.Data/bin
+/ShopNongSan/ShopNongSan.Service/bin
+/ShopNongSan/ShopNongSan.WebApp/bin

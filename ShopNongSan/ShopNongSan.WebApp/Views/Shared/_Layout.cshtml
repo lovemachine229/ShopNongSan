@@ -1,4 +1,11 @@
-﻿
+﻿@using ShopNongSan.Service.Interfaces.IManager
+@using ShopNongSan.Service.Manager;
+@model IEnumerable<ShopNongSan.Data.Collection.Category>
+
+@{
+    ICategoryManager _categoryManager = new CategoryManager();
+}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -262,12 +269,21 @@ $(".banusser").click(function() {
 <div class="menu_ns">
     <div class="thanhmenu">Danh Mục Nông Sản</div>
     <div id='cssmenu'>
-        @*<ul>
-                @foreach (var item in CategoryService.GetAll())
-                {
-                    <li><a href='@Url.Action("Details", "Category", new {id = item.CategoryId})'><span>Rau củ</span></a></li>
-                }
-        </ul>*@
+        <ul>
+            @foreach(var item in Model)
+            {
+                
+                   @Html.ActionLink("GetProductByCatId", "Product", new { id=item.Id })                     
+            }
+            <li><a href='a'><span>Rau củ</span></a></li>
+            <li><a href='#'><span>Trái cây</span></a></li>
+            <li><a href='#'><span>Các loại hạt và ngũ cốc</span></a></li>
+            <li><a href='#'><span>Thực phẩm sấy khô</span></a></li>
+            <li><a href='#'><span>Gia vị</span></a></li>
+            <li><a href='#'><span>Sản phẩm khác</span></a></li>
+            <li><a href='#'><span>Thịt tươi sống</span></a></li>
+            <li><a href='#'><span>Thủy & hải sản</span></a></li>
+        </ul>
      </div>
 
 </div>
