@@ -10,5 +10,14 @@ namespace ShopNongSan.Service.Manager
         public CategoryManager() : base(new CategoryRepository())
         {
         }
+
+        public bool isNotExist(string categoryName)
+        {
+            var result = GetFirstOrDefault(p => p.CategoryName.Equals(categoryName));
+            if (result != null)
+                return false;
+            else
+                return true;
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace ShopNongSan.Data.Collection;
 
         public int ViewCount { get; set; }
 
-        public DateTime CreateAt { get; set; }
+        public DateTime Create_At { get; set; }
 
         public string? UserId { get; set; }
 

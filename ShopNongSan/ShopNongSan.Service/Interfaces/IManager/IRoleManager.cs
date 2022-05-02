@@ -3,8 +3,8 @@ using ShopNongSan.Data.Collection;
 
 namespace ShopNongSan.Service.Interfaces.IManager
 {
-    public interface ICategoryManager : ICommonManager<Category>
+    public interface IRoleManager : ICommonManager<Role>
     {
-        bool isNotExist(string categoryName);
+        List<string> getRoleList();
     }
 }

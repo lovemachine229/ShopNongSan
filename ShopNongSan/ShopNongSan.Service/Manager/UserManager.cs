@@ -12,17 +12,33 @@ namespace ShopNongSan.Service.Manager
             
         }
 
-        public int Login(string phoneNumb, string password)
+        public int AdminLogin(string phoneNumb, string password)
         {
-            var result =  GetFirstOrDefault(p => p.PhoneNumb.Equals(phoneNumb) && p.Password.Equals(password));
+            var result =  GetFirstOrDefault(p => p.PhoneNumb.Equals(phoneNumb) && p.Password.Equals(password) && p.Role.Equals("admin"));
 
             if(result != null)
             {
-                if (result.Role.Equals("admin"))
-                    return 2; //admin
-                else if(result.Role.Equals("user"))
-                    return 1; //user
-                else return 0;
+                return 1;
+            }
+            return 0;
+        }
+
+        public bool isNotExist(string phoneNumb)
+        {
+            var result = GetFirstOrDefault(p => p.PhoneNumb.Equals(phoneNumb));
+            if( result != null)
+                return false;
+            else 
+                return true;
+        }
+
+        public int UserLogin(string phoneNumb, string password)
+        {
+            var result = GetFirstOrDefault(p => p.PhoneNumb.Equals(phoneNumb) && p.Password.Equals(password) && p.Role.Equals("user"));
+
+            if (result != null)
+            {
+                return 1;
             }
             return 0;
         }

@@ -8,12 +8,13 @@ namespace ShopNongSan.Data.Collection
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int Id { get; set; }
+        public string? Id { get; set; }
 
         [Required]
         [Display(Name = "Điện thoại")]
-        [StringLength(13)]
-        [Phone(ErrorMessage = "Vui lòng nhập đúng định dạng")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+
         public string PhoneNumb { get; set; }
 
         [Required]
@@ -26,6 +27,8 @@ namespace ShopNongSan.Data.Collection
         [StringLength(50)]
         public string? Name { get; set; }
 
+        public string? Avatar { get; set; }
+
         [Required]
         [Display(Name = "Địa chỉ")]
         [StringLength(200)]
@@ -36,11 +39,17 @@ namespace ShopNongSan.Data.Collection
         [EmailAddress(ErrorMessage = "Vui lòng nhập đúng định dạng")]
         public string? Email { get; set; }
 
+        [Required]
         [Display(Name = "Giới tính")]
-        public bool Gender { get; set; }
+        public string Gender { get; set; }
 
+        [Display(Name = "Vai trò")]
         public string? Role { get; set; }
 
+        [Display(Name = "Kích hoạt")]
         public bool Is_Active { get; set; }
+
+        [Display(Name = "Thời gian tạo")]
+        public DateTime Created_At { get; set; }
     }
 }

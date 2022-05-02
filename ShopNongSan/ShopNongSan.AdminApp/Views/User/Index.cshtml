@@ -1,0 +1,105 @@
+﻿@using ShopNongSan.Data.Models
+@model IEnumerable<ShopNongSan.Data.Collection.User>
+
+
+
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+    Layout = "/Views/Shared/_Layout.cshtml";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Mật khẩu
+            </th>
+            <th>
+                Họ tên
+            </th>
+            <th>
+                Ảnh đại diện
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                Vai trò
+            </th>
+            <th>
+                Kích hoạt
+            </th>
+            <th>
+                Thời gian tạo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src="data:image/png;base64,@item.Avatar" width="50" height= "50">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Is_Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created_At)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<partial name="_pager" model=@pager />

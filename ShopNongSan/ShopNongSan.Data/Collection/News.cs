@@ -4,14 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShopNongSan.Data.Collection
 {
-    public class Category
+    public class News
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [Display(Name = "Product Name")]
-        [Required(ErrorMessage = "Please enter product name")]
-        public string CategoryName { get; set; }
+        public string Title { get; set; }
+
+        public string Content { get; set; }
+
+        public string Image { get; set; }
+
+        public DateTime Created_At { get; set; }
     }
 }

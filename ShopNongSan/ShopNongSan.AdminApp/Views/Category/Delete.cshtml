@@ -1,0 +1,27 @@
+﻿@model ShopNongSan.Data.Collection.Category
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Xóa danh mục</h1>
+
+<h3>Vui lòng kiểm tra thông tin trước khi xóa?</h3>
+<div>
+    <h4>Danh mục</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete" method="post">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Quay lại</a>
+    </form>
+</div>
