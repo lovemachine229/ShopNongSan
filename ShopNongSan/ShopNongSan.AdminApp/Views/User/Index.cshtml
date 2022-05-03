@@ -18,6 +18,13 @@
     }
 }
 
+@using (Html.BeginForm())
+{
+    <p>
+        Tìm kiếm user: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm" />
+    </p>
+}
 
 <p>
     <a asp-action="Create">Thêm mới</a>
@@ -32,7 +39,8 @@
                 Mật khẩu
             </th>
             <th>
-                Họ tên
+                @Html.ActionLink("Họ tên", "Index", new { sortOrder = ViewBag.SapTheoTen,
+                     currentFilter = ViewBag.CurrentFilter})
             </th>
             <th>
                 Ảnh đại diện

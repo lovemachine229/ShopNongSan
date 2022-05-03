@@ -18,9 +18,13 @@ namespace ShopNongSan.Service.Manager
 
             if(result != null)
             {
-                return 1;
+                if (result.Is_Active)
+                {
+                    return 1; //login success
+                }
+                return -1; //account dissable
             }
-            return 0;
+            return 0; //login fail
         }
 
         public bool isNotExist(string phoneNumb)
@@ -38,9 +42,13 @@ namespace ShopNongSan.Service.Manager
 
             if (result != null)
             {
-                return 1;
+                if (result.Is_Active)
+                {
+                    return 1; //login success
+                }
+                return -1; //account dissable
             }
-            return 0;
+            return 0; //login fail
         }
     }
 }

@@ -15,9 +15,42 @@ namespace ShopNongSan.AdminApp.Controllers
         private IRoleManager _roleManager = new RoleManager();
 
         
-        public ActionResult Index(int pg = 1)
+        public ActionResult Index(string sortOrder, string searchString,
+            string currentFilter, int pg=1)
         {
+
+            ViewBag.CurrentSort = sortOrder; //Biến lấy yêu cầu sắp xếp hiện tại
+
+            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            //Lấy giá trị của bộ lọc hiên tại
+            if (searchString != null)
+            {
+                pg = 1; //Trang đầu tiên
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            //Lấy danh sách user
             var users = _userManager.GetAll().ToList();
+
+            //Lọc theo tên user
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.FindAll(p => p.Name.ToLower().Contains(searchString));
+            }
+            //Sắp xếp
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    users = users.OrderByDescending(p => p.Name).ToList();
+                    break;
+                default:
+                    users = users.OrderBy(s => s.Name).ToList();
+                    break;
+            }
 
             const int pageSize = 5;
             if (pg < 1)
@@ -56,7 +89,7 @@ namespace ShopNongSan.AdminApp.Controllers
                 {
                     user.Id = ObjectId.GenerateNewId().ToString();
                     user.Gender = Request.Form["Gender"];
-                    user.Created_At = DateTime.UtcNow;
+                    user.Created_At = DateTime.Parse(DateTimeOffset.Now.ToString());
 
                     byte[] imageArray = System.IO.File.ReadAllBytes(@"C:\Users\ADMIN\OneDrive\Máy tính\Đồ án\ShopNongSan\ShopNongSan\ShopNongSan\ShopNongSan.AdminApp\wwwroot\assets\img\default-avatar.png");
                     string base64ImageRepresentation = Convert.ToBase64String(imageArray);
@@ -79,6 +112,7 @@ namespace ShopNongSan.AdminApp.Controllers
                     if (isSaved)
                     {
                         ModelState.AddModelError("", "Create Success");
+                        return RedirectToAction(nameof(Index));
                     }
                     else 
                     {
@@ -90,8 +124,11 @@ namespace ShopNongSan.AdminApp.Controllers
                     ModelState.AddModelError("", "Số điện thoại đã được đăng ký");
                 }
             }
-            
-            return View();
+            List<string> list = _roleManager.getRoleList();
+            SelectList roleList = new SelectList(list);
+            ViewBag.RoleList = roleList;
+
+            return View(user);
         }
 
         public ActionResult Edit(string? id)
@@ -144,13 +181,13 @@ namespace ShopNongSan.AdminApp.Controllers
             return View(result);
         }
 
-        [HttpPost]
-        public ActionResult Delete(User user)
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteConfirm(string Id)
         {
             if (ModelState.IsValid)
             {
 
-                bool isDeleted = _userManager.Delete(ObjectId.Parse(user.Id));
+                bool isDeleted = _userManager.Delete(ObjectId.Parse(Id));
 
                 if (isDeleted)
                 {
@@ -162,18 +199,37 @@ namespace ShopNongSan.AdminApp.Controllers
                 }
             }
 
-            return View(user);
-        }
-
-        [HttpGet]
-        public IActionResult Login()
-        {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Login(FormCollection collection)
+        [HttpGet]
+        public ActionResult Login()
         {
+
+            return View();
+        }
+
+        [HttpPost, ActionName("Login")]
+        public ActionResult Login(LoginViewModel loginVM)
+        {
+
+            int login = _userManager.AdminLogin(loginVM.PhoneNumb, loginVM.Password);
+
+            if(login == 1)
+            {
+                return RedirectToAction("Index", "AdminHome");
+            }
+
+            if(login == -1)
+            {
+                ModelState.AddModelError("","Tài khoản của bạn đã bị khóa, vui lòng liên hệ admin");
+            }
+
+            if(login == 0)
+            {
+                ModelState.AddModelError("", "Số điện thoại hoặc mật khẩu không khớp với bất kỳ tài khoản nào, vui lòng kiểm tra lại");
+            }
+
             return View();
         }
     }

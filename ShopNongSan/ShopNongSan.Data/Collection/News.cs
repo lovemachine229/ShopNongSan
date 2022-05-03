@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopNongSan.Data.Collection
 {
@@ -10,12 +11,20 @@ namespace ShopNongSan.Data.Collection
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        public string Title { get; set; }
+        [Required(ErrorMessage = "Hãy nhập tiêu đề")]
+        [Display(Name ="Tiêu đề")]
+        public string? Title { get; set; }
 
-        public string Content { get; set; }
-
+        [Column(TypeName = "text")]
+        [Display(Name = "Ảnh mô tả")]
         public string Image { get; set; }
 
+
+        [Column(TypeName = "text")]
+        [Display(Name = "Nội dung")]
+        public string? Content { get; set; }
+
+        [Display(Name = "Thời gian tạo")]
         public DateTime Created_At { get; set; }
     }
 }

@@ -1,0 +1,66 @@
+﻿@model ShopNongSan.Data.Collection.News
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<h1>Thêm mới</h1>
+
+<h4>Tin tức</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Ảnh mô tả<br />
+                <img id="output" class="img-rounded" width="180" src="~/assets/img/no-image.png" />
+                <input type="file" name="image" asp-for="Image" class="form-control" onchange="loadFile(event)"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class=form-control></textarea>
+                @*<span asp-validation-for="Content" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Tạo" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay lại</a>
+</div>
+
+
+<script>
+    var loadFile = function (event) {
+        var img = document.getElementById('output');
+        img.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#Content').summernote();
+    });
+</script>
+
+
+
