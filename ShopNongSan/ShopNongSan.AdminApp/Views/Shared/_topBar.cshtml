@@ -1,0 +1,47 @@
+﻿@using ShopNongSan.Data.Models;
+@model PagerModel;
+
+<style>
+.page-link{ color: black!important;}
+
+.page-item.active .page-link{
+    z-index:3;
+    color:#ffff;
+    background-color:blue !important;
+    border-color:red;
+}
+</style>
+
+
+<div class="container btn-group" style="background-color:black; border-radius:10px;height:45px;">
+    <div class="col-4 p-0 justify-content-end mt-1">
+    <form asp-action="Index">
+        <span class="btn-group">
+            <input class="form-control" type="text" name="searchText" value="@ViewBag.SearchText" placeholder="Search Key" />
+
+            <input class="p-1 ml-2 btn btn-sm btn-danger" style="border-radius:10px;" type="submit" value="Search"/>
+        </span>
+    </form>
+    </div>
+
+    <div class="container mt-1">
+    <ul class="pagination justify-content-center">
+        @for(var pge = Model.StartPage; pge <= Model.EndPage; pge++)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="User" asp-action="Index" 
+                    asp-route-pg="@pge"
+                    asp-route-pageSize="@Model.PageSize"
+                    asp-route-searchText="@Model.SearchText"
+                    asp-route-sortExpression="@Model.SortExpression">
+                    @pge
+                </a>
+            </li>
+        }
+    </ul>
+    </div>
+</div>
+
+
+
+

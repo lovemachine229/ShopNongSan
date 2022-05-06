@@ -5,6 +5,7 @@ using ShopNongSan.Data.Collection;
 using ShopNongSan.Data.Models;
 using ShopNongSan.Service.Interfaces.IManager;
 using ShopNongSan.Service.Manager;
+using ShopNongSan.Service.Tools;
 
 namespace ShopNongSan.AdminApp.Controllers
 {
@@ -13,25 +14,19 @@ namespace ShopNongSan.AdminApp.Controllers
     {
         private INewsManager _newsManager = new NewsManager();
         // GET: NewsController
-        public ActionResult Index(int pg = 1)
+        public ActionResult Index(string sortExpression="")
         {
-            var lstNews = _newsManager.GetAll().ToList();
+            SortModel sortModel = new SortModel();
 
-            const int pageSize = 5;
-            if (pg < 1)
-                pg = 1;
+            sortModel.AddColumn("title");
+            sortModel.AddColumn("time");
+            sortModel.ApplySort(sortExpression);
+            ViewData["sortModel"] = sortModel;
 
-            int recsCount = lstNews.Count;
+            //List<News> news = _newsManager.GetUsers(sortModel.SortedProperty, sortModel.SortedOrder);
+            var result = _newsManager.GetAll();
 
-            var pager = new Pager(recsCount, pg, pageSize);
-
-            int recSkip = (pg - 1) * pageSize;
-
-            var data = lstNews.Skip(recSkip).Take(pager.PageSize).ToList();
-
-            this.ViewBag.Pager = pager;
-
-            return View(data);
+            return View(result);
         }
 
         // GET: NewsController/Details/5
@@ -69,11 +64,11 @@ namespace ShopNongSan.AdminApp.Controllers
                         MemoryStream memoryStream = new MemoryStream();
                         image.OpenReadStream().CopyTo(memoryStream);
 
-                        news.Image = Convert.ToBase64String(memoryStream.ToArray());
+                        news.Thumbnail = Convert.ToBase64String(memoryStream.ToArray());
                     }
                     else
                     {
-                        news.Image = base64ImageRepresentation;
+                        news.Thumbnail = base64ImageRepresentation;
                     }
 
 
@@ -116,30 +111,48 @@ namespace ShopNongSan.AdminApp.Controllers
         // POST: NewsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(News news)
+        public ActionResult Edit(News news, IFormFile thumbnail)
         {
             try
             {
-                if (ModelState.IsValid)
+                News oldeNews = _newsManager.GetById(ObjectId.Parse(news.Id));
+                if (thumbnail != null)
                 {
-                    bool isUpdated = _newsManager.Update(ObjectId.Parse(news.Id), news);
+                    MemoryStream memoryStream = new MemoryStream();
+                    thumbnail.OpenReadStream().CopyTo(memoryStream);
 
-                    if (isUpdated)
+                    news.Thumbnail = Convert.ToBase64String(memoryStream.ToArray());
+                }
+                else
+                {
+                    string oldImage = oldeNews.Thumbnail;
+
+                    if (oldImage == null)
                     {
-                        return RedirectToAction(nameof(Index));
+                        byte[] imageArray = System.IO.File.ReadAllBytes(@"C:\Users\ADMIN\OneDrive\Máy tính\Đồ án\ShopNongSan\ShopNongSan\ShopNongSan\ShopNongSan.AdminApp\wwwroot\assets\img\no-image.png");
+                        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+                        news.Thumbnail = base64ImageRepresentation;
                     }
                     else
-                    {
-                        ModelState.AddModelError("", "Lỗi cập nhật");
-                    }
+                        news.Thumbnail = oldImage;
                 }
 
+                bool isUpdated = _newsManager.Update(ObjectId.Parse(news.Id), news);
+
+                if (isUpdated)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Lỗi cập nhật");
+                }
                 return View(news);
-                
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
+                return View(news);
             }
         }
 

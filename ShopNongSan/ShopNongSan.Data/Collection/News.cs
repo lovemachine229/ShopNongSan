@@ -17,7 +17,7 @@ namespace ShopNongSan.Data.Collection
 
         [Column(TypeName = "text")]
         [Display(Name = "Ảnh mô tả")]
-        public string Image { get; set; }
+        public string Thumbnail { get; set; }
 
 
         [Column(TypeName = "text")]

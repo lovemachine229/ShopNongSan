@@ -23,7 +23,7 @@ namespace ShopNongSan.AdminApp.Controllers
 
             int recsCount = categories.Count;
 
-            var pager = new Pager(recsCount, pg, pageSize);
+            var pager = new PagerModel(recsCount, pg, pageSize);
 
             int recSkip = (pg - 1) * pageSize;
 

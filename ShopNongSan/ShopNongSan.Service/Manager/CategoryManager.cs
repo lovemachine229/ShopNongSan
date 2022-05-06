@@ -11,6 +11,19 @@ namespace ShopNongSan.Service.Manager
         {
         }
 
+        public List<string> getCategoryList()
+        {
+            var catList = GetAll();
+
+            List<string> list = new List<string>();
+            foreach (var cat in catList)
+            {
+                if (cat.CategoryName != null)
+                    list.Add(cat.CategoryName);
+            }
+            return list;
+        }
+
         public bool isNotExist(string categoryName)
         {
             var result = GetFirstOrDefault(p => p.CategoryName.Equals(categoryName));

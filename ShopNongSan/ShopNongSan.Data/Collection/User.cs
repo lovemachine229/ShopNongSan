@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShopNongSan.Data.Collection
 {
+
+    public enum SortOrder { Ascending=0, Descending=1}
     public class User
     {
         [BsonId]
@@ -27,6 +29,7 @@ namespace ShopNongSan.Data.Collection
         [StringLength(50)]
         public string? Name { get; set; }
 
+        [Display(Name ="Ảnh đại diện")]
         public string? Avatar { get; set; }
 
         [Required]

@@ -5,6 +5,7 @@ using ShopNongSan.Data.Collection;
 using ShopNongSan.Data.Models;
 using MongoDB.Bson;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ShopNongSan.Service.Tools;
 
 namespace ShopNongSan.AdminApp.Controllers
 {
@@ -15,58 +16,28 @@ namespace ShopNongSan.AdminApp.Controllers
         private IRoleManager _roleManager = new RoleManager();
 
         
-        public ActionResult Index(string sortOrder, string searchString,
-            string currentFilter, int pg=1)
+        
+        
+        public ActionResult Index(string sortExpression="", string searchText="",int pg = 1, int pageSize = 5)
         {
+            SortModel sortModel = new SortModel();
 
-            ViewBag.CurrentSort = sortOrder; //Biến lấy yêu cầu sắp xếp hiện tại
+            sortModel.AddColumn("name");
+            sortModel.AddColumn("time");
+            sortModel.ApplySort(sortExpression);
+            ViewData["sortModel"] = sortModel;
 
-            ViewBag.SapTheoTen = String.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
-            //Lấy giá trị của bộ lọc hiên tại
-            if (searchString != null)
-            {
-                pg = 1; //Trang đầu tiên
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-            ViewBag.CurrentFilter = searchString;
+            ViewBag.SearchText = searchText;
 
-            //Lấy danh sách user
-            var users = _userManager.GetAll().ToList();
+            List<User> users = _userManager.GetUsers(sortModel.SortedProperty, sortModel.SortedOrder, searchText);
 
-            //Lọc theo tên user
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                users = users.FindAll(p => p.Name.ToLower().Contains(searchString));
-            }
-            //Sắp xếp
-            switch (sortOrder)
-            {
-                case "ten_desc":
-                    users = users.OrderByDescending(p => p.Name).ToList();
-                    break;
-                default:
-                    users = users.OrderBy(s => s.Name).ToList();
-                    break;
-            }
-
-            const int pageSize = 5;
-            if (pg < 1)
-                pg = 1;
-
-            int recsCount = users.Count;
-
-            var pager = new Pager(recsCount,pg, pageSize);
-
-            int recSkip = (pg - 1) * pageSize;
-            
-            var data = users.Skip(recSkip).Take(pager.PageSize).ToList();
+            var pager = new PagerModel(users.Count, pg, pageSize);
+            pager.SortExpression = sortExpression;
 
             this.ViewBag.Pager = pager;
 
-            return View(data);
+
+            return View(users);
         }
 
         [HttpGet]
@@ -83,13 +54,13 @@ namespace ShopNongSan.AdminApp.Controllers
         [HttpPost]
         public ActionResult Create(User user, IFormFile avatar)
         {
-            if (ModelState.IsValid)
-            {
+            
                 if (_userManager.isNotExist(user.PhoneNumb))
                 {
                     user.Id = ObjectId.GenerateNewId().ToString();
                     user.Gender = Request.Form["Gender"];
-                    user.Created_At = DateTime.Parse(DateTimeOffset.Now.ToString());
+                    //user.Created_At = DateTime.Parse(DateTimeOffset.Now.ToString());
+                    user.Created_At = DateTime.Now;
 
                     byte[] imageArray = System.IO.File.ReadAllBytes(@"C:\Users\ADMIN\OneDrive\Máy tính\Đồ án\ShopNongSan\ShopNongSan\ShopNongSan\ShopNongSan.AdminApp\wwwroot\assets\img\default-avatar.png");
                     string base64ImageRepresentation = Convert.ToBase64String(imageArray);
@@ -123,7 +94,6 @@ namespace ShopNongSan.AdminApp.Controllers
                 {
                     ModelState.AddModelError("", "Số điện thoại đã được đăng ký");
                 }
-            }
             List<string> list = _roleManager.getRoleList();
             SelectList roleList = new SelectList(list);
             ViewBag.RoleList = roleList;
@@ -148,10 +118,32 @@ namespace ShopNongSan.AdminApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(User user, IFormFile avatar)
         {
-            if (ModelState.IsValid)
+            try
             {
+                User oldeUser = _userManager.GetById(ObjectId.Parse(user.Id));
+                if (avatar != null)
+                {
+                    MemoryStream memoryStream = new MemoryStream();
+                    avatar.OpenReadStream().CopyTo(memoryStream);
+
+                    user.Avatar = Convert.ToBase64String(memoryStream.ToArray());
+                }
+                else
+                {
+                    string oldImage = oldeUser.Avatar;
+
+                    if (oldImage == null)
+                    {
+                        byte[] imageArray = System.IO.File.ReadAllBytes(@"C:\Users\ADMIN\OneDrive\Máy tính\Đồ án\ShopNongSan\ShopNongSan\ShopNongSan\ShopNongSan.AdminApp\wwwroot\assets\img\no-image.png");
+                        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+                        user.Avatar = base64ImageRepresentation;
+                    }
+                    else
+                        user.Avatar = oldImage;
+                }
+
                 bool isUpdated = _userManager.Update(ObjectId.Parse(user.Id), user);
 
                 if (isUpdated)
@@ -162,9 +154,13 @@ namespace ShopNongSan.AdminApp.Controllers
                 {
                     ModelState.AddModelError("", "Lỗi cập nhật");
                 }
+                return View(user);
             }
-
-            return View(user);
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(user);
+            }
         }
 
         public ActionResult Details(string id)

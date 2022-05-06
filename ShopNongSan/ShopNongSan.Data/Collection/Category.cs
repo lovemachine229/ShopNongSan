@@ -10,7 +10,7 @@ namespace ShopNongSan.Data.Collection
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [Display(Name = "Product Name")]
+        [Display(Name = "Tên danh mục")]
         [Required(ErrorMessage = "Please enter product name")]
         public string CategoryName { get; set; }
     }

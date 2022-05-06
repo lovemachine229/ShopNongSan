@@ -14,7 +14,7 @@ namespace ShopNongSan.Service.Manager
 
         public List<Product> GetProductsByCatId(string id)
         {
-            List<Product> products = GetAll(p => p.CatId.Equals(id)).ToList();
+            List<Product> products = GetAll(p => p.Id.Equals(id)).ToList();
 
             return products;
 

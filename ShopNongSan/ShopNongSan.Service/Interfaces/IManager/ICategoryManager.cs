@@ -6,5 +6,7 @@ namespace ShopNongSan.Service.Interfaces.IManager
     public interface ICategoryManager : ICommonManager<Category>
     {
         bool isNotExist(string categoryName);
+
+        List<string> getCategoryList();
     }
 }

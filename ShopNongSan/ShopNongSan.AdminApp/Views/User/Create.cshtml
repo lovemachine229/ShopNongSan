@@ -39,9 +39,8 @@
             <br />
             <div class="form-group">
                 Ảnh đại diện<br />
-                <img id="output" class="img-rounded" width="180" src="~/assets/img/no-image.png" />
+                <img id="output" name="output" class="img-rounded" width="180" src="~/assets/img/no-image.png" />
                 <input type="file" asp-for="Avatar" class="form-control" onchange="loadFile(event)"/>
-                <span asp-validation-for="Avatar" class="text-danger" ></span>
             </div>
             <br />
             <div class="form-group">
@@ -77,14 +76,14 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Tạo" class="btn btn-primary" />
+                <input type="submit" value="Tạo" class="btn btn-primary"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Quay lại</a>
 </div>
 
 <script>

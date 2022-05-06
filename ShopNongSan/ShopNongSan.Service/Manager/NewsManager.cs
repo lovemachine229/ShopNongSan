@@ -11,5 +11,10 @@ namespace ShopNongSan.Service.Manager
         {
 
         }
+
+        public List<News> GetNews(string sortProperty, SortOrder sortOrder)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
