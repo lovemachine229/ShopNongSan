@@ -46,6 +46,9 @@ namespace ShopNongSan.Data.Collection
         [Display(Name = "Giới tính")]
         public string Gender { get; set; }
 
+        [Display(Name = "Lượng sp đã đăng")]
+        public int PostCount { get; set; }
+
         [Display(Name = "Vai trò")]
         public string? Role { get; set; }
 

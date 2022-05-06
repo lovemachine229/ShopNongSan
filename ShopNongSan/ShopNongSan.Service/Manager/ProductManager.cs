@@ -12,12 +12,18 @@ namespace ShopNongSan.Service.Manager
             
         }
 
-        public List<Product> GetProductsByCatId(string id)
+        public List<Product> GetProductsByCatId(object id)
         {
             List<Product> products = GetAll(p => p.Id.Equals(id)).ToList();
 
             return products;
 
+        }
+
+        public List<Product> GetTop20(string demand)
+        {
+            List<Product> products = GetAll(p => p.Demand.Equals(demand)).Take(20).ToList();
+            return products;
         }
     }
 }

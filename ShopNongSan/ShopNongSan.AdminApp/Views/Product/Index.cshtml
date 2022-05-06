@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Thêm mới</a>
 </p>
 <table class="table">
     <thead>
@@ -21,6 +21,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Demand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
@@ -56,6 +59,9 @@
                 @Html.DisplayFor(modelItem => item.Demand)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
@@ -74,9 +80,9 @@
                 @Html.DisplayFor(modelItem => item.PhoneNumb)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Xem chi tiết", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
             </td>
         </tr>
 }

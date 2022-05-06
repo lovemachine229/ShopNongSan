@@ -20,6 +20,9 @@ public class Product
     [Display(Name = "Nhu cầu")]
     public string Demand { get; set; }
 
+    [Display(Name = "Tỉnh/Tp")]
+    public string Area { get; set; }
+
     [Display(Name = "Giá")]
     public string Price { get; set; }
 
